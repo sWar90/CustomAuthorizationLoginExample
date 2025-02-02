@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold Server=.;Database=CustomAuthorizationLoginExample;User ID=sa;Password=123;TrustServerCertificate=True; Microsoft.EntityFrameworkCore.SqlServer -o Models -c AppDbContext -f
