@@ -1,4 +1,5 @@
-﻿using CustomAuthorizationLoginExample.Domain.Features.Login;
+﻿using AspNetCoreGeneratedDocument;
+using CustomAuthorizationLoginExample.Domain.Features.Login;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomAuthorizationLoginExample.Controllers
@@ -14,6 +15,13 @@ namespace CustomAuthorizationLoginExample.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> IndexAsync(LoginRequestModel requestModel)
+        {
+            var loginResponse = await _loginService.HandleAsyc(requestModel);
             return View();
         }
     }

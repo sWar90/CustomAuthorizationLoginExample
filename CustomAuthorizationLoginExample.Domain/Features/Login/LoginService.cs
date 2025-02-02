@@ -16,7 +16,7 @@ public class LoginService
         _dbContent = dbContent;
     }
 
-    public async Task HandleAsyc(LoginRequestModel requestModel)
+    public async Task<LoginResponseModel> HandleAsyc(LoginRequestModel requestModel)
     {
         try
         {
@@ -38,6 +38,14 @@ public class LoginService
 
             _dbContent.TblLogins.Add(login);
             await _dbContent.SaveChangesAsync();
+
+            return new LoginResponseModel
+            {
+                UserId = user.UserId.ToString(),
+                SessionId = login.SessionId,
+                SessionExpired=login.SessionExpired
+            };
+
         }
         catch (Exception ex)
         {
